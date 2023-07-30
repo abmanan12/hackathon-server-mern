@@ -22,7 +22,9 @@ const AuthScema = new mongoose.Schema(
             type: String,
             required: true
         },
-        picture: String,
+        resetToken: Number,
+        resetTokenExpiresAt: Number,
+        // picture: String,
     },
     {
         timestamps: true
