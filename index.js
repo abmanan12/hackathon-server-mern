@@ -20,6 +20,7 @@ app.use('/images', express.static('images'))
 
 app.use(require('./routes/authRoute'))
 app.use(require('./routes/imageRoute'))
+app.use(require('./routes/produtRoute'))
 
 
 app.listen((process.env.PORT), () => {

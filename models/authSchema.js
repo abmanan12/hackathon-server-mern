@@ -10,17 +10,13 @@ const AuthScema = new mongoose.Schema(
             type: String,
             required: true
         },
-        firstname: {
+        name: {
             type: String,
             required: true
         },
-        lastname: {
-            type: String,
-            required: true
-        },
-        country: {
-            type: String,
-            required: true
+        admin: {
+            type: Boolean,
+            default: false
         },
         resetToken: Number,
         resetTokenExpiresAt: Number,

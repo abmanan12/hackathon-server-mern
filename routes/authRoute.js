@@ -11,9 +11,9 @@ const sendPasswordResetEmail = require('../email/emailService');
 // register route
 router.post('/register', async (req, res) => {
 
-    const { username, password, firstname, lastname, country } = req.body
+    const { username, password, name } = req.body
 
-    if (!username || !password || !firstname || !lastname || !country) {
+    if (!username || !password || !name ) {
         return res.status(422).json('Plz fill all fields properly')
     }
 
@@ -103,8 +103,8 @@ router.post('/sendEmail', async (req, res) => {
         }
 
         let otpCode = Math.floor(Math.random() * 10000)
-
         user.resetToken = otpCode;
+        
         user.resetTokenExpiresAt = Date.now() + 120000;
 
         // Send the password reset email
@@ -112,7 +112,7 @@ router.post('/sendEmail', async (req, res) => {
 
         await user.save();
 
-        res.status(200).json('Password reset email sent successfully');
+        res.status(200).json('email sent');
 
     } catch (error) {
         res.status(500).json(error);
@@ -152,7 +152,7 @@ router.post('/resetPassword', async (req, res) => {
 
         }
         else {
-            return res.status(404).json('User not found');
+            return res.status(404).json('OTP is not correct');
         }
 
     } catch (error) {
